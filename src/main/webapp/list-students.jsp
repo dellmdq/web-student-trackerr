@@ -7,15 +7,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Student Tracker App</title>
+	<meta charset="UTF-8">
+	<title>Student Tracker App</title>
+	
+	<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
-<%
-	//get the students from the request object (sent by servlet)
-	List<Student> theStudents = 
-					(List<Student>) request.getAttribute("STUDENT_LIST");
 
-%>
 
 
 
@@ -35,13 +32,14 @@
 					<th>Last Name</th>
 					<th>Email</th>
 					
-					<% for (Student tempStudent : theStudents){ %>
+					<c:forEach var="tempStudent" items="${STUDENT_LIST}">
 						<tr>
-							<td> <%= tempStudent.getFirstName() %> </td>
-							<td> <%= tempStudent.getLastName() %> </td>
-							<td> <%= tempStudent.getEmail() %> </td>
+							<td> ${tempStudent.firstName }</td>
+							<td> ${tempStudent.lastName}</td>
+							<td> ${tempStudent.email} </td>
 						</tr>
-					<% } %>
+						
+					</c:forEach>
 				</tr>
 			
 			</table>
